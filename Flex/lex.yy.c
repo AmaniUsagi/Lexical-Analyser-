@@ -65,23 +65,10 @@
 /* Returned upon end-of-file. */
 #define YY_NULL 0
 
-/* Promotes a possibly negative, possibly signed char to an unsigned
- * integer for use as an array index.  If the signed char is negative,
- * we want to instead treat it as an 8-bit unsigned char, hence the
- * double cast.
- */
 #define YY_SC_TO_UI(c) ((unsigned int) (unsigned char) c)
 
-/* Enter a start condition.  This macro really ought to take a parameter,
- * but we do it the disgusting crufty way forced on us by the ()-less
- * definition of BEGIN.
- */
 #define BEGIN yy_start = 1 + 2 *
 
-/* Translate the current start state into a value that can be later handed
- * to BEGIN to return to the state.  The YYSTATE alias is for lex
- * compatibility.
- */
 #define YY_START ((yy_start - 1) / 2)
 #define YYSTATE YY_START
 
@@ -105,20 +92,6 @@ extern FILE *yyin, *yyout;
 #define EOB_ACT_END_OF_FILE 1
 #define EOB_ACT_LAST_MATCH 2
 
-/* The funky do-while in the following #define is used to turn the definition
- * int a single C statement (which needs a semi-colon terminator).  This
- * avoids problems with code like:
- *
- * 	if ( condition_holds )
- *		yyless( 5 );
- *	else
- *		do_something_else();
- *
- * Prior to using the do-while the compiler would get upset at the
- * "else" because it interpreted the "if" statement as being all
- * done when it reached the ';' after the yyless() call.
- */
-
 /* Return all but the first 'n' matched characters back to the input stream. */
 
 #define yyless(n) \
@@ -134,10 +107,6 @@ extern FILE *yyin, *yyout;
 
 #define unput(c) yyunput( c, yytext_ptr )
 
-/* The following is because we cannot portably get our hands on size_t
- * (without autoconf's help, which isn't available because we want
- * flex-generated scanners to compile on their own).
- */
 typedef unsigned int yy_size_t;
 
 
@@ -148,62 +117,27 @@ struct yy_buffer_state
 	char *yy_ch_buf;		/* input buffer */
 	char *yy_buf_pos;		/* current position in input buffer */
 
-	/* Size of input buffer in bytes, not including room for EOB
-	 * characters.
-	 */
 	yy_size_t yy_buf_size;
 
-	/* Number of characters read into yy_ch_buf, not including EOB
-	 * characters.
-	 */
 	int yy_n_chars;
 
-	/* Whether we "own" the buffer - i.e., we know we created it,
-	 * and can realloc() it to grow it, and should free() it to
-	 * delete it.
-	 */
 	int yy_is_our_buffer;
 
-	/* Whether this is an "interactive" input source; if so, and
-	 * if we're using stdio for input, then we want to use getc()
-	 * instead of fread(), to make sure we stop fetching input after
-	 * each newline.
-	 */
 	int yy_is_interactive;
 
-	/* Whether we're considered to be at the beginning of a line.
-	 * If so, '^' rules will be active on the next match, otherwise
-	 * not.
-	 */
 	int yy_at_bol;
 
-	/* Whether to try to fill the input buffer when we reach the
-	 * end of it.
-	 */
 	int yy_fill_buffer;
 
 	int yy_buffer_status;
 #define YY_BUFFER_NEW 0
 #define YY_BUFFER_NORMAL 1
-	/* When an EOF's been seen but there's still some text to process
-	 * then we mark the buffer as YY_EOF_PENDING, to indicate that we
-	 * shouldn't try reading from the input source any more.  We might
-	 * still have a bunch of tokens to match, though, because of
-	 * possible backing-up.
-	 *
-	 * When we actually see the EOF, we change the status to "new"
-	 * (via yyrestart()), so that the user can continue scanning by
-	 * just pointing yyin at a new input file.
-	 */
+	
 #define YY_BUFFER_EOF_PENDING 2
 	};
 
 static YY_BUFFER_STATE yy_current_buffer = 0;
 
-/* We provide macros for accessing buffer states in case in the
- * future we want to put the buffer states in a more general
- * "scanner state".
- */
 #define YY_CURRENT_BUFFER yy_current_buffer
 
 
@@ -441,10 +375,7 @@ YY_MALLOC_DECL
 #include <stdlib.h>
 #endif
 #else
-/* Just try to get by without declaring the routines.  This will fail
- * miserably on non-ANSI systems for which sizeof(size_t) != sizeof(int)
- * or sizeof(void*) != sizeof(int).
- */
+
 #endif
 #endif
 
@@ -456,9 +387,7 @@ YY_MALLOC_DECL
 /* Copy whatever the last rule matched to the standard output. */
 
 #ifndef ECHO
-/* This used to be an fputs(), but since the string might contain NUL's,
- * we now use fwrite().
- */
+
 #define ECHO (void) fwrite( yytext, yyleng, 1, yyout )
 #endif
 
@@ -484,10 +413,6 @@ YY_MALLOC_DECL
 		YY_FATAL_ERROR( "input in flex scanner failed" );
 #endif
 
-/* No semi-colon after return; correct usage is to write "yyterminate();" -
- * we don't want an extra ';' after the "return" because that will cause
- * some compilers to complain about unreachable statements.
- */
 #ifndef yyterminate
 #define yyterminate() return YY_NULL
 #endif
@@ -670,27 +595,13 @@ case YY_STATE_EOF(INITIAL):
 
 		if ( yy_current_buffer->yy_buffer_status == YY_BUFFER_NEW )
 			{
-			/* We're scanning a new file or input source.  It's
-			 * possible that this happened because the user
-			 * just pointed yyin at a new source and called
-			 * yylex().  If so, then we have to assure
-			 * consistency between yy_current_buffer and our
-			 * globals.  Here is the right place to do so, because
-			 * this is the first action (other than possibly a
-			 * back-up) that will match for the new input source.
-			 */
+			
 			yy_n_chars = yy_current_buffer->yy_n_chars;
 			yy_current_buffer->yy_input_file = yyin;
 			yy_current_buffer->yy_buffer_status = YY_BUFFER_NORMAL;
 			}
 
-		/* Note that here we test for yy_c_buf_p "<=" to the position
-		 * of the first EOB in the buffer, since yy_c_buf_p will
-		 * already have been incremented past the NUL character
-		 * (since all states make transitions on EOB to the
-		 * end-of-buffer state).  Contrast this with the test
-		 * in input().
-		 */
+		
 		if ( yy_c_buf_p <= &yy_current_buffer->yy_ch_buf[yy_n_chars] )
 			{ /* This was really a NUL. */
 			yy_state_type yy_next_state;
@@ -698,15 +609,6 @@ case YY_STATE_EOF(INITIAL):
 			yy_c_buf_p = yytext_ptr + yy_amount_of_matched_text;
 
 			yy_current_state = yy_get_previous_state();
-
-			/* Okay, we're now positioned to make the NUL
-			 * transition.  We couldn't have
-			 * yy_get_previous_state() go ahead and do it
-			 * for us because it doesn't know how to deal
-			 * with the possibility of jamming (and we don't
-			 * want to build jamming into it because then it
-			 * will run more slowly).
-			 */
 
 			yy_next_state = yy_try_NUL_trans( yy_current_state );
 
@@ -735,15 +637,7 @@ case YY_STATE_EOF(INITIAL):
 
 				if ( yywrap() )
 					{
-					/* Note: because we've taken care in
-					 * yy_get_next_buffer() to have set up
-					 * yytext, we can now set up
-					 * yy_c_buf_p so that if some total
-					 * hoser (like flex itself) wants to
-					 * call the scanner after we return the
-					 * YY_NULL, it'll still work - another
-					 * YY_NULL will get returned.
-					 */
+			
 					yy_c_buf_p = yytext_ptr + YY_MORE_ADJ;
 
 					yy_act = YY_STATE_EOF(YY_START);
@@ -788,14 +682,6 @@ case YY_STATE_EOF(INITIAL):
 		} /* end of scanning one token */
 	} /* end of yylex */
 
-
-/* yy_get_next_buffer - try to read in a new buffer
- *
- * Returns a code representing an action:
- *	EOB_ACT_LAST_MATCH -
- *	EOB_ACT_CONTINUE_SCAN - continue scanning from current position
- *	EOB_ACT_END_OF_FILE - end of file
- */
 
 static int yy_get_next_buffer()
 	{
@@ -957,12 +843,6 @@ static yy_state_type yy_get_previous_state()
 	}
 
 
-/* yy_try_NUL_trans - try to make a transition on the NUL character
- *
- * synopsis
- *	next_state = yy_try_NUL_trans( current_state );
- */
-
 #ifdef YY_USE_PROTOS
 static yy_state_type yy_try_NUL_trans( yy_state_type yy_current_state )
 #else
@@ -1049,10 +929,7 @@ static int input()
 
 	if ( *yy_c_buf_p == YY_END_OF_BUFFER_CHAR )
 		{
-		/* yy_c_buf_p now points to the character we want to return.
-		 * If this occurs *before* the EOB characters, then it's a
-		 * valid NUL; if not, then we've hit the end of the buffer.
-		 */
+	
 		if ( yy_c_buf_p < &yy_current_buffer->yy_ch_buf[yy_n_chars] )
 			/* This was really a NUL. */
 			*yy_c_buf_p = '\0';
@@ -1065,17 +942,7 @@ static int input()
 			switch ( yy_get_next_buffer() )
 				{
 				case EOB_ACT_LAST_MATCH:
-					/* This happens because yy_g_n_b()
-					 * sees that we've accumulated a
-					 * token and flags that we need to
-					 * try matching the token before
-					 * proceeding.  But for input(),
-					 * there's no matching to consider.
-					 * So convert the EOB_ACT_LAST_MATCH
-					 * to EOB_ACT_END_OF_FILE.
-					 */
-
-					/* Reset buffer status. */
+			
 					yyrestart( yyin );
 
 					/* fall through */
@@ -1146,11 +1013,7 @@ YY_BUFFER_STATE new_buffer;
 	yy_current_buffer = new_buffer;
 	yy_load_buffer_state();
 
-	/* We don't actually know whether we did this switch during
-	 * EOF (yywrap()) processing, but the only time this flag
-	 * is looked at is after yywrap() is called, so it's safe
-	 * to go ahead and always set it.
-	 */
+	
 	yy_did_buffer_switch_on_eof = 1;
 	}
 
@@ -1514,13 +1377,7 @@ void *ptr;
 yy_size_t size;
 #endif
 	{
-	/* The cast to (char *) in the following accommodates both
-	 * implementations that use char* generic pointers, and those
-	 * that use void* generic pointers.  It works with the latter
-	 * because both ANSI C and C++ allow castless assignment from
-	 * any pointer type to void*, and deal with argument conversions
-	 * as though doing an assignment.
-	 */
+	
 	return (void *) realloc( (char *) ptr, size );
 	}
 
