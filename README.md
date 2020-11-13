@@ -14,3 +14,4 @@ o	Identifiers
 o	Operators
 o	Integers
 -	The phrases passed in the programs are assigned to their suitable role 
+![](Screenshots/Lex2.PNG)
