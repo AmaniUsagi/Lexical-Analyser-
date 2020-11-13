@@ -1,0 +1,4 @@
+This is a code that runs in c++
+- I have not intaracted much with C so i prefferably use C++
+- Source program passed through the Lexical analyser
+- Reads input and classifis them into tokens for parser to use for syntax analysis

@@ -1,0 +1,8 @@
+# depslib dependency file v1.0
+1605217594 source:c:\users\cayonbyrd\documents\codeblocks\lexical\main.cpp
+	<iostream>
+	<fstream>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+
