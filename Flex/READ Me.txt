@@ -1,0 +1,10 @@
+How to use the Flex Program
+
+- Run the program and type in inputs
+- The program will read the input and classify it based on the defined rules
+- i.e. a + b 
+
+output:
+a - idenifier
++ - operand
+b -identifier

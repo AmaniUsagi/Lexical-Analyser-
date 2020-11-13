@@ -13,7 +13,8 @@ Explanation of the work
         - Identifiers
         - Operators
         - Integers
--	The phrases passed in the programs are assigned to their suitable role 
-![](Screenshots/lex3.PNG)
-- The output
+-	The phrases passed in the programs are assigned to their suitable role
+- The Flex output 
+![](Screenshots/flex1.PNG)
+- The Lexical analyser output
 ![](Screenshots/Lex2.PNG)
