@@ -15,5 +15,5 @@ o	Operators
 o	Integers
 -	The phrases passed in the programs are assigned to their suitable role 
 ![](Screenshots/lex3.PNG)
-
+- The output
 ![](Screenshots/Lex2.PNG)
