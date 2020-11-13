@@ -9,10 +9,10 @@ Explanation of the work
 -	The scanner identifies tokens based on the defined rules in the source code.
 -	The classification of tokens is done after file is read
 -	The classification is in groups i.e.
-o	Predefined and reserved words grouped as Keywords in C
-o	Identifiers 
-o	Operators
-o	Integers
+        - Predefined and reserved words grouped as Keywords in C
+        - Identifiers
+        - Operators
+        - Integers
 -	The phrases passed in the programs are assigned to their suitable role 
 ![](Screenshots/lex3.PNG)
 - The output
